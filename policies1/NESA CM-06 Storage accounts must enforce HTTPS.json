@@ -1,0 +1,46 @@
+{
+  "properties": {
+    "displayName": "NESA CM-06 Storage accounts must enforce HTTPS",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "Enforces secure transfer for storage accounts",
+    "metadata": {
+      "createdBy": "30c0f569-cc07-4e8f-a044-26172d237ef6",
+      "createdOn": "2025-11-23T12:57:44.8489315Z",
+      "updatedBy": "30c0f569-cc07-4e8f-a044-26172d237ef6",
+      "updatedOn": "2025-11-23T13:02:33.5555322Z"
+    },
+    "version": "1.0.0",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "field": "Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly",
+            "notEquals": true
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    },
+    "versions": [
+      "1.0.0"
+    ]
+  },
+  "id": "/subscriptions/8a7e1ab2-e3e0-47ab-aa93-563096192af9/providers/Microsoft.Authorization/policyDefinitions/NESA-CM-06-Storage-HTTPS",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "name": "NESA-CM-06-Storage-HTTPS",
+  "systemData": {
+    "createdBy": "regish.babu4321@gmail.com",
+    "createdByType": "User",
+    "createdAt": "2025-11-23T12:57:44.8134814Z",
+    "lastModifiedBy": "regish.babu4321@gmail.com",
+    "lastModifiedByType": "User",
+    "lastModifiedAt": "2025-11-23T13:02:33.5147652Z"
+  }
+}

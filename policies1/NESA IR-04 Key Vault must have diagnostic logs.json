@@ -1,0 +1,61 @@
+{
+  "properties": {
+    "displayName": "NESA IR-04 Key Vault must have diagnostic logs",
+    "policyType": "Custom",
+    "mode": "Indexed",
+    "description": "Key Vault must have diagnostic logs enabled",
+    "metadata": {
+      "createdBy": "30c0f569-cc07-4e8f-a044-26172d237ef6",
+      "createdOn": "2025-11-23T13:08:52.9169694Z",
+      "updatedBy": null,
+      "updatedOn": null
+    },
+    "version": "1.0.0",
+    "policyRule": {
+      "if": {
+        "field": "type",
+        "equals": "Microsoft.KeyVault/vaults"
+      },
+      "then": {
+        "effect": "AuditIfNotExists",
+        "details": {
+          "type": "Microsoft.Insights/diagnosticSettings",
+          "existenceCondition": {
+            "allOf": [
+              {
+                "field": "Microsoft.Insights/diagnosticSettings/logs[*].enabled",
+                "equals": true
+              },
+              {
+                "anyOf": [
+                  {
+                    "field": "Microsoft.Insights/diagnosticSettings/logs[*].category",
+                    "equals": "AuditEvent"
+                  },
+                  {
+                    "field": "Microsoft.Insights/diagnosticSettings/logs[*].category",
+                    "equals": "AllMetrics"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    "versions": [
+      "1.0.0"
+    ]
+  },
+  "id": "/subscriptions/8a7e1ab2-e3e0-47ab-aa93-563096192af9/providers/Microsoft.Authorization/policyDefinitions/NESA-IR-04-KeyVault-Logs",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "name": "NESA-IR-04-KeyVault-Logs",
+  "systemData": {
+    "createdBy": "regish.babu4321@gmail.com",
+    "createdByType": "User",
+    "createdAt": "2025-11-23T13:08:52.8346198Z",
+    "lastModifiedBy": "regish.babu4321@gmail.com",
+    "lastModifiedByType": "User",
+    "lastModifiedAt": "2025-11-23T13:08:52.8346198Z"
+  }
+}

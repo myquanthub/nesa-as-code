@@ -1,0 +1,45 @@
+{
+  "properties": {
+    "displayName": "NESA IR-05 Subnets must have NSG attached",
+    "policyType": "Custom",
+    "mode": "All",
+    "metadata": {
+      "createdBy": "30c0f569-cc07-4e8f-a044-26172d237ef6",
+      "createdOn": "2025-11-23T13:03:26.3177463Z",
+      "updatedBy": "30c0f569-cc07-4e8f-a044-26172d237ef6",
+      "updatedOn": "2025-11-23T13:12:00.1720328Z"
+    },
+    "version": "1.0.0",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/virtualNetworks/subnets"
+          },
+          {
+            "field": "Microsoft.Network/virtualNetworks/subnets/networkSecurityGroup.id",
+            "exists": false
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    },
+    "versions": [
+      "1.0.0"
+    ]
+  },
+  "id": "/subscriptions/8a7e1ab2-e3e0-47ab-aa93-563096192af9/providers/Microsoft.Authorization/policyDefinitions/NESA-IR-05-Subnet-NSG",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "name": "NESA-IR-05-Subnet-NSG",
+  "systemData": {
+    "createdBy": "regish.babu4321@gmail.com",
+    "createdByType": "User",
+    "createdAt": "2025-11-23T13:03:26.2443748Z",
+    "lastModifiedBy": "regish.babu4321@gmail.com",
+    "lastModifiedByType": "User",
+    "lastModifiedAt": "2025-11-23T13:12:00.1208993Z"
+  }
+}

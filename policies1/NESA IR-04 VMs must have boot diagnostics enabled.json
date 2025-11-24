@@ -1,0 +1,45 @@
+{
+  "properties": {
+    "displayName": "NESA IR-04 VMs must have boot diagnostics enabled",
+    "policyType": "Custom",
+    "mode": "All",
+    "metadata": {
+      "createdBy": "30c0f569-cc07-4e8f-a044-26172d237ef6",
+      "createdOn": "2025-11-23T13:06:42.2527597Z",
+      "updatedBy": "30c0f569-cc07-4e8f-a044-26172d237ef6",
+      "updatedOn": "2025-11-23T13:12:09.3227357Z"
+    },
+    "version": "1.0.0",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "field": "Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.enabled",
+            "notEquals": true
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    },
+    "versions": [
+      "1.0.0"
+    ]
+  },
+  "id": "/subscriptions/8a7e1ab2-e3e0-47ab-aa93-563096192af9/providers/Microsoft.Authorization/policyDefinitions/NESA-IR-04-VM-BootDiag",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "name": "NESA-IR-04-VM-BootDiag",
+  "systemData": {
+    "createdBy": "regish.babu4321@gmail.com",
+    "createdByType": "User",
+    "createdAt": "2025-11-23T13:06:42.184814Z",
+    "lastModifiedBy": "regish.babu4321@gmail.com",
+    "lastModifiedByType": "User",
+    "lastModifiedAt": "2025-11-23T13:12:09.267276Z"
+  }
+}

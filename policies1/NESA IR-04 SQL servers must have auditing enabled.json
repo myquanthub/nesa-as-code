@@ -1,0 +1,46 @@
+{
+  "properties": {
+    "displayName": "NESA IR-04 SQL servers must have auditing enabled",
+    "policyType": "Custom",
+    "mode": "Indexed",
+    "description": "SQL servers must have auditing enabled",
+    "metadata": {
+      "createdBy": "30c0f569-cc07-4e8f-a044-26172d237ef6",
+      "createdOn": "2025-11-23T13:11:40.3418506Z",
+      "updatedBy": null,
+      "updatedOn": null
+    },
+    "version": "1.0.0",
+    "policyRule": {
+      "if": {
+        "field": "type",
+        "equals": "Microsoft.Sql/servers"
+      },
+      "then": {
+        "effect": "AuditIfNotExists",
+        "details": {
+          "type": "Microsoft.Sql/servers/auditingSettings",
+          "name": "Default",
+          "existenceCondition": {
+            "field": "Microsoft.Sql/servers/auditingSettings/state",
+            "equals": "Enabled"
+          }
+        }
+      }
+    },
+    "versions": [
+      "1.0.0"
+    ]
+  },
+  "id": "/subscriptions/8a7e1ab2-e3e0-47ab-aa93-563096192af9/providers/Microsoft.Authorization/policyDefinitions/NESA-IR-04-SQL-Auditing",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "name": "NESA-IR-04-SQL-Auditing",
+  "systemData": {
+    "createdBy": "regish.babu4321@gmail.com",
+    "createdByType": "User",
+    "createdAt": "2025-11-23T13:11:40.2565753Z",
+    "lastModifiedBy": "regish.babu4321@gmail.com",
+    "lastModifiedByType": "User",
+    "lastModifiedAt": "2025-11-23T13:11:40.2565753Z"
+  }
+}
